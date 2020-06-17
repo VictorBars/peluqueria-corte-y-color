@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+.active:focus {
+	background: #f834a1 !important;
+}
+</style>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<hr>
+	<hr>
+	<hr>
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Page Heading -->
+		<h1 class="my-4">Lista Servicios</h1>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Descripcion</th>
+					<th scope="col">Precio S/</th>
+					<th scope="col">Duracion</th>
+					<th scope="col">Acciones</th>
+
+				</tr>
+			</thead>
+			<tbody th:each="s: ${servicios}" >
+				<tr>
+					<th scope="row" th:text="${s.codigo}">1</th>
+					<td th:text="${s.nombre}">Mark</td>
+					<td th:text="${s.precio}">Otto</td>
+					<td th:text="${s.duracion}">Otto</td>
+					<td>
+						<a th:href="@{'/servicio/edits/' + ${s.codigo} }" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
+						<a th:href="@{'/servicio/dels/' + ${s.codigo} }" class="btn btn-danger"> <i class="fas fa-trash-alt"></i> </a>							
+							</td>
+				</tr>
+
+			</tbody>
+		</table>
+		<p align="center">
+			<a  th:href="@{/servicio/registros}" class="btn btn-info"> <i class="fas fa-calendar-alt"></i> Registro Servicio</a> 
+				<a th:href="@{ /servicio }" class="btn btn-danger"> <i class="fas fa-undo"></i> Cancelar
+			</a>
+		</p>
+	</div>
+	<!-- /.container -->
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

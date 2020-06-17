@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+body {
+  background: #454545;
+  background: linear-gradient(to right, #283F4B   , #283F4B);
+}
+
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: absolute;
+  top: 30px; left: -140px;
+  width: 1200px;
+}
+
+.card-signin .card-title {
+  margin-bottom: 1rem;
+  font-weight: 300;
+  font-size: 2.5rem;
+}
+
+.card-signin .card-img-left {
+  width: 60%;
+  /* Link to your background image using in the property below! */
+  background: scroll center url('https://images.unsplash.com/photo-1527772837295-9150784b5ae5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80');
+  background-size: cover;
+}
+
+.card-signin .card-body {
+  padding: 3rem;
+  
+}
+
+.form-signin {
+  width: 100%;
+}
+
+.form-signin .btn {
+  font-size: 80%;
+  border-radius: 5rem;
+  letter-spacing: .1rem;
+  font-weight: bold;
+  padding: 1rem;
+  transition: all 0.2s;
+}
+
+.form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group input {
+  height: auto;
+  border-radius: 2rem;
+}
+
+.form-label-group>input,
+.form-label-group>label {
+  padding: var(--input-padding-y) var(--input-padding-x);
+}
+
+.form-label-group>label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  /* Override default `<label>` margin */
+  line-height: 1.5;
+  color: #454545;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+  padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+  padding-top: calc(var(--input-padding-y) / 3);
+  padding-bottom: calc(var(--input-padding-y) / 3);
+  font-size: 12px;
+  color: #777;
+}
+
+.btn-google {
+  color: white;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white;
+  background-color: #3b5998;
+}
+</style>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 col-xl-9 mx-auto">
+				<div class="card card-signin flex-row my-5">
+					<div class="card-img-left d-none d-md-flex">
+						<!-- Background image for card set in CSS! -->
+					</div>
+					<div class="card-body">
+						<h5 class="card-title text-center">Registrate!</h5>
+						
+						<div th:if="${dangerRegister}" class="alert alert-danger" role="alert">
+  							<span th:text="${dangerRegister}"></span>
+						</div>
+						
+						<form th:action="@{/usuario/save}" th:object="${usuario}" 
+							method="post" class="form-signin">
+						
+						
+							<div class="form-label-group">
+								<input type="text" id="inputNombre" class="form-control"
+									placeholder="Nombres" required autofocus th:field="*{nombres}" > <label
+									for="inputNombre">Nombres*</label>
+							</div>
+
+							<div class="form-label-group">
+								<input type="text" id="inputApellido" class="form-control"
+									placeholder="Apellidos*" required th:field="*{apellidos}" > <label
+									for="inputApellido">Apellidos*</label>
+							</div>
+							
+							<div class="form-label-group">
+								<input type="text" id="inputDni" class="form-control"
+									placeholder="Documento de Identidad*" required th:field="*{dni}" > <label
+									for="inputDni">Dni*</label>
+							</div>
+
+							<hr>
+              				
+              				<div class="form-label-group">
+                				<input type="email" id="inputEmail" class="form-control" 
+                					placeholder="Correo Electronico*" required th:field="*{correo}"> <label 
+                					for="inputEmail">Correo Electronico*</label>
+              				</div>
+              				
+							<div class="form-label-group">
+								<input type="text" id="inputUserame" class="form-control"
+									placeholder="Username*" required autofocus th:field="*{username}" > <label
+									for="inputUserame">Nombre de Usuario*</label>
+							</div>
+
+							<div class="form-label-group">
+								<input type="password" id="inputPassword" class="form-control"
+									placeholder="Password*" required th:field="*{password}" > <label
+									for="inputPassword">Password*</label>
+							</div>
+
+							<hr>
+							
+							
+
+
+							<button class="btn btn-lg btn-primary btn-block text-uppercase"
+								type="submit">Register</button>
+							<a class="d-block text-center mt-2 small" href="#">Sign In</a>
+							<hr class="my-4">
+							
+							
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

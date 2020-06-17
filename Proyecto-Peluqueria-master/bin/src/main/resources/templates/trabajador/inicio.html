@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<hr>
+	<hr>
+	<hr>
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Page Heading -->
+		<h1 class="my-4">Lista Peluquero</h1>
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre y Apellidos</th>
+					<th scope="col">Sexo</th>
+					<th scope="col">Direccion </th>
+					<th scope="col">dni </th>
+					<th scope="col">Telefono </th>
+					<th scope="col">Acciones</th>
+
+				</tr>
+			</thead>
+			<tbody  th:each="t: ${trabajadores}" >
+				<tr>
+					<th scope="row" th:text="${t.codigo}">1</th>
+					<td th:text="${t.nombre}">Mark</td>
+					<td th:text="${t.sexo}">Mark</td>
+					<td th:text="${t.direccion}">Mark</td>
+					<td th:text="${t.dni}">Mark</td>
+					<td th:text="${t.telefono}">Mark</td>
+					<td>
+						<a th:href="@{'/trabajador/editt/' + ${t.codigo} }" class="btn btn-warning"> <i class="fas fa-edit"></i> </a>
+						<a  th:href="@{'/trabajador/delt/' + ${t.codigo} }" class="btn btn-danger"> <i class="fas fa-trash-alt"></i> </a>							
+							</td>
+				</tr>
+
+			</tbody>
+		</table>
+		<p align="center">
+			<a  th:href="@{/trabajador/registrot}" class="btn btn-info"> <i class="fas fa-calendar-alt"></i> Registro Peluquero</a> 
+				<a th:href="@{ / }"class="btn btn-danger"> <i class="fas fa-undo"></i> Cancelar
+			</a>
+		</p>
+	
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

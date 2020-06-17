@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragmen="head">
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Human Resource Project">
+<meta name="author" content="Juan Flores-Moroco">
+
+<title>Estilos & Belleza Vilma</title>
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/chosen.min.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.min.css}">
+</head>
+<body>
+
+	<header th:fragment="header">
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" th:href="@{/}">Estilos & Belleza
+					Integral Vilma</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarResponsive" aria-controls="navbarResponsive"
+					aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+					<ul class="navbar-nav ml-auto"> 
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/}">Home <span class="sr-only">(current)</span>
+						</a></li>
+
+						<li sec:authorize="isAuthenticated()" class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+							role="button" aria-haspopup="true" aria-expanded="false">Servicio</a>
+
+							<div class="dropdown-menu">
+
+								<a class="dropdown-item" th:href="@{/servicio}">Seleccionar
+									Servicio</a>
+
+								<div sec:authorize="hasRole('ROLE_ADMIN')"
+									class="dropdown-divider"></div>
+
+								<a sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-item"
+									th:href="@{ '/servicio/nuevoservicio/'}"> Registro Servicio</a>
+
+								<a sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-item"
+									th:href="@{/horario}"> Registro Horario</a> <a
+									sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-item"
+									th:href="@{/trabajador}"> Registro Peluquero</a> <a
+									sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-item"
+									th:href="@{/cita}"> Lista Cita</a>
+
+
+							</div></li>
+
+
+							<li sec:authorize="isAuthenticated()" class="nav-item"><a class="nav-link"  th:href="@{'/usuario/verid/'}" >Compras
+									<i class="fas fa-cart-plus"></i>
+							</a></li>
+							
+							<li  sec:authorize="isAnonymous()" class="nav-item"><a class="nav-link"  th:href="@{'/usuario/login/'}" >Iniciar Sesion
+									<i class="fas fa-user-circle"></i>
+							</a></li>
+							
+
+							<li  sec:authorize="isAuthenticated()"  class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+								role="button" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-user"></i>  <span
+									sec:authorize="isAuthenticated()"
+									th:text="${#authentication.getPrincipal().getNombres()}"
+									class="text-white-50"> </span>
+							</a>
+							<div class="dropdown-menu">
+								
+								 
+								<a  sec:authorize="isAuthenticated()" class="dropdown-item"   th:href="@{'/usuario/perfil/'}" > <i
+								class="fas fa-user-circle"></i> Perfil</a> 
+								
+								<a  sec:authorize="isAuthenticated()" class="dropdown-item" th:href="@{/logout}" ><i
+								class="fas fa-sign-out-alt"></i> Cerrar Sesion</a>
+							</div></li>
+
+							
+						
+						</ul>
+
+
+
+
+				</div>
+			</div>
+		</nav>
+
+	</header>
+
+	<div class="container">
+		<h1>Estilos & Belleza Vilma</h1>
+	</div>
+	<footer th:fragment="footer">
+		<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/chosen.jquery.min.js}"></script>
+		<script th:src="@{/js/fontawesome.min.js}"></script>
+		<script th:src="@{/js/sweetalert.min.js}"></script>
+	</footer>
+</body>
+</html>

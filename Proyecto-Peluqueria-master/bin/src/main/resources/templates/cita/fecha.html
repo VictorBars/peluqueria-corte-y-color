@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+.active:focus {
+	background: #f834a1 !important;
+}
+
+body {
+  background: url('') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+</style>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<hr>
+	<hr>
+	<hr>
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Page Heading -->
+		<h1 align="center" class="my-4">Fechas en Enero del 2019 </h1>
+
+		<table class="table ">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					
+					<th align="left" scope="col" >Servicio</th>
+					<th scope="col">Asistido Por*</th>
+					<th scope="col">Fecha</th>
+					<th scope="col">Hora</th>
+					<th scope="col">Duracion</th>
+					<th scope="col">Nombre Cliente</th>
+					
+					<th scope="col">Total S/</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			<tbody th:each="c: ${citas}">
+				<tr >
+					<th scope="row" th:text="${c.codigo}">1</th>
+					<td >
+						<img src="https://cdn.buenavibra.es/wp-content/uploads/2019/02/18192922/bigstock-corte-pelo-cabello-1170x600.jpg"  width="170" height="80" 
+						alt="..." class="rounded-pill" > 
+						<label th:text="${c.Servicio.nombre}" class="text-black" style="margin-left: 10px" ></label>
+					</td>
+					<td th:text="${c.Trabajador.nombre}"></td>
+					<td th:text="${c.fecha}"></td>
+					<td th:text="${c.Horario.descripcion}"></td>
+					<td th:text="${c.Servicio.duracion}" class="table-light"></td>
+					<td th:text="${c.Usuario.nombres}" class="table-light"></td>
+				
+					<td class="table-info">
+					<label class="text-black"> S/</label> <label
+							th:text="${c.Servicio.precio}" class="text-black"></label> <label
+							class="text-black" style="margin-left: -5px">0</label>
+					</td>
+					<td>
+						<a th:href="@{'/cita/editc/' + ${c.codigo} }" class="btn btn-warning" > <i class="fas fa-edit"></i> </a>
+						<a th:href="@{'/cita/delc/' + ${c.codigo} }" class="btn btn-danger"> <i class="fas fa-trash-alt"></i> </a>	
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<p align="center">
+			<a  th:href="@{'/cita/export/all'}" class="btn btn-info"> <i class="fas fa-calendar-alt"></i> Exportar</a>
+		</p>
+	
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

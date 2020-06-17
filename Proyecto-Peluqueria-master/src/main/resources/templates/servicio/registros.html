@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+.active:focus {
+	background: #f834a1 !important;
+}
+</style>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<hr>
+	<hr>
+	<hr>
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Page Heading -->
+		<h1 class="my-4">Registrar Servicios</h1>
+
+		<div class="card">
+			<div class="card-header">Registro de nuevo Servicio</div>
+			<div class="card-body">
+
+				<form  th:action="@{/servicio/saveservicio}" th:object="${servicio}"
+					method="post">
+					<div class="form-row">
+
+						<div class="form-group col-md-3">
+							<label for="fecha">Codigo </label> <input type="text"
+								class="form-control" placeholder="#" th:field="*{codigo}" >
+								
+							<label for="nombre">Nombre</label> <input type="text"
+								class="form-control" placeholder="Nombre" th:field="*{nombre}"> 
+							
+							<label for="duracion">Precio</label> <input type="text"
+								class="form-control" placeholder="0.0" th:field="*{precio}">
+								
+							<label for="duracion">Duracion</label> <input type="text"
+								class="form-control" placeholder="Duracion min" th:field="*{duracion}">
+						<hr>			
+						<button class="btn btn-lg btn-primary btn-block text-uppercase"
+						type="submit">
+						<i class="fas fa-cart-plus"></i> Grabar  </button>
+						<a th:href="@{ /servicio/nuevoservicio }" class="btn btn-lg btn-danger btn-block text-uppercase">Cancelar</a>
+								
+						</div>
+					</div>
+
+
+					
+					
+					
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

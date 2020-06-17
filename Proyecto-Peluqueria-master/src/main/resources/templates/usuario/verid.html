@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+
+		<h1 align="center">Carrito</h1>
+
+		<div class="card">
+			<div class="card-header ">Informacion de Personal:</div>
+			<div class="card-body">
+				
+				<p>Nombres: <span th:text="${usuario.nombres}"></span></p>
+				<p>Apellidos: <span th:text="${usuario.apellidos}"></span></p>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Servicio</th>
+							<th scope="col">Asistido por*</th>
+							<th scope="col">Fecha</th>
+							<th scope="col">Hora</th>
+							<th scope="col">Duracion</th>
+							<th scope="col">Total</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="u: ${usuario.listacita}"> 
+						<tr>
+							<td  scope="row" th:text="${u.codigo}" >Mark</td>
+							<td th:text="${u.Servicio.nombre}">Otto</td>
+							<td th:text="${u.Trabajador.nombre}">@mdo</td>
+							<td th:text="${u.fecha}">@mdo</td>
+							<td th:text="${u.Horario.descripcion}">@mdo</td>
+							<td  th:text="${u.Servicio.duracion}">@mdo</td>
+							<td class="table-info">
+								<label class="text-black"> S/</label> <label
+									th:text="${u.Servicio.precio}" class="text-black"></label> 
+									<label class="text-black" style="margin-left: -5px">0</label>
+							</td>
+							<td>
+								<a th:href="@{'/cita/editc/'  + ${u.codigo} }" class="btn btn-info" > <i class="fas fa-calendar-alt"></i>  Checkout</a> 
+								<a th:href="@{'/usuario/delu/' + ${u.codigo} }" class="btn btn-danger"> <i class="fas fa-trash-alt"></i> </a>	
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>
+				
+			
+
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

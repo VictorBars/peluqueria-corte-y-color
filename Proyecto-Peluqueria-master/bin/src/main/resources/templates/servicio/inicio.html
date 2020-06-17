@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout :: head">
+
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<hr>
+	<hr>
+	<hr>
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Page Heading -->
+		<h1 class="my-4">
+			Seleccionar Servicio </h1>
+
+		<div class="row">
+			<div th:each="s: ${servicios}" class="col-lg-6 mb-4">
+				<div class="card h-100">
+					<a href="#"><img class="card-img-top"
+						src="https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt=""></a>
+					<div class="card-body">
+						<h4 class="card-title">
+							<a th:text="${s.nombre}" href="#">Project One</a>
+							</h4>
+							
+							<p class="card-text">Los Mejores Cortes a la moda.</p>
+							<h5 align="right">
+							<label class="text-black-50">Duracion</label>
+							<label th:text="${s.duracion}" class="text-black-50"></label>
+							</h5>
+							<h3 class="label info"> 
+							<label class="text-black-50">S/</label>
+							<label  th:text="${s.precio}" class="text-black-50"></label>
+      						<label class="text-black-50" style="margin-left: -8px">0</label>
+    					 
+					   </h3>
+						<p align="right">
+					    <a  sec:authorize="hasAnyRole('ROLE_CLIENTE', 'ROLE_USER', 'ROLE_ADMIN' )" th:href="@{ '/servicio/info/' + ${s.codigo} }" class="btn btn-info"> <i class="fas fa-calendar-alt"></i> Seleccionar Horario</a>
+					    <a th:href="@{ / }" class="btn btn-danger"> <i class="fas fa-undo"></i> Cancelar</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+		<!-- /.row -->
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+.active:focus {
+	background: #f834a1 !important;
+}
+</style>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<hr>
+	<hr>
+	<hr>
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Page Heading -->
+		<h1 class="my-4">Registrar Horarios</h1>
+
+		<div class="card">
+			<div class="card-header">Registro de nuevo Horario</div>
+			<div class="card-body">
+
+				<form  th:action="@{/horario/savehorario}" th:object="${horario}"
+					method="post">
+					<div class="form-row">
+
+						<div class="form-group col-md-3">
+							<label for="fecha">Codigo </label> <input type="text"
+								class="form-control" placeholder="#" th:field="*{codigo}" >
+								
+							<label for="nombre">Nombre</label> <input type="text"
+								class="form-control" placeholder="Nombre" th:field="*{descripcion}"> 
+							
+						<hr>			
+						<button class="btn btn-lg btn-primary btn-block text-uppercase"
+						type="submit">
+						<i class="fas fa-cart-plus"></i> Grabar  </button>
+						<a th:href="@{ /horario }" class="btn btn-lg btn-danger btn-block text-uppercase">Cancelar</a>
+								
+						</div>
+					</div>
+
+
+					
+					
+					
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

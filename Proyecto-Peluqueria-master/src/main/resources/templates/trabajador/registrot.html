@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+.active:focus {
+	background: #f834a1 !important;
+}
+</style>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<hr>
+	<hr>
+	<hr>
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Page Heading -->
+		<h1 class="my-4">Registrar Peluquero</h1>
+
+		<div class="card">
+			<div class="card-header">Registro de nuevo Peluquero</div>
+			<div class="card-body">
+
+				<form  th:action="@{/trabajador/savetrabajador}" th:object="${trabajador}"
+					method="post">
+					<div class="form-row">
+
+						<div class="form-group col-md-3">
+							
+								
+							    <label for="nombre">Nombre</label> <input type="text"
+								class="form-control" placeholder="Nombre" th:field="*{nombre}">
+								
+					            <label for="nombre">Sexo</label> <input type="text"
+								class="form-control" placeholder="Nombre" th:field="*{sexo}">
+								
+								<label for="nombre">Direccion</label> <input type="text"
+								class="form-control" placeholder="Nombre" th:field="*{direccion}">
+								
+								<label for="nombre">Documento de Identidad</label> <input type="text"
+								class="form-control" placeholder="Nombre" th:field="*{dni}">
+								
+								<label for="nombre">Telefono*</label> <input type="text"
+								class="form-control" placeholder="Nombre" th:field="*{telefono}">    	 
+							
+						<hr>			
+						<button class="btn btn-lg btn-primary btn-block text-uppercase"
+						type="submit">
+						<i class="fas fa-cart-plus"></i> Grabar  </button>
+						<a th:href="@{ /trabajador }" class="btn btn-lg btn-danger btn-block text-uppercase">Cancelar</a>
+								
+						</div>
+					</div>
+
+
+					
+					
+					
+				</form>
+
+			</div>
+		</div>
+
+	</div>
+	<!-- /.container -->
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+
+		<h1 align="center">Perfil</h1>
+
+		<div class="card">
+			<div class="card-header ">Informacion de Personal:</div>
+			<div class="card-body">
+				
+				<p>Nombres: <span th:text="${usuario.nombres}"></span></p>
+				<p>Apellidos: <span th:text="${usuario.apellidos}"></span></p>
+
+				
+				
+				<p align="center">
+					<a  th:href="@{'/tarjeta/registrotar' }" class="btn btn-info" > <i class="fas fa-calendar-alt"></i>  Agregar Tarjeta</a> 
+					
+				</p>
+
+			</div>
+		</div>
+
+
+
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

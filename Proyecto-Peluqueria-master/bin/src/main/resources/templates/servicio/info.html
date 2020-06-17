@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" 
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="layout/layout :: head"></head>
+<style>
+.active:focus {
+	background: #f834a1 !important;
+}
+</style>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+	<hr>
+	<hr>
+	<hr>
+	<!-- Page Content -->
+	<div class="container">
+
+		<!-- Page Heading -->
+		<h1 class="my-4">Seleccionar Horario</h1>
+		
+		<div th:if="${citacompletada}" class="alert alert-danger" role="alert">
+  					<span th:text="${citacompletada}"></span>
+				</div>
+		<!-- Project One -->
+		<div class="row">
+			<div class="col-md-7">
+				<a href="#"> <img class="img-fluid rounded mb-3 mb-md-0"
+					src="https://cdn.buenavibra.es/wp-content/uploads/2019/02/18192922/bigstock-corte-pelo-cabello-1170x600.jpg"
+					alt="">
+				</a>
+			</div>
+			<div class="col-md-5">
+				<h3 class="card-title">
+					<a th:text="${servicio.nombre}" href="#">Project One</a>
+				</h3>
+
+				<form th:action="@{/servicio/save}" th:object="${cita}"
+					method="post">
+					<div class="form-row">
+
+						<div class="form-group col-md-5">
+							<label for="fecha">Fecha: </label> 
+							<input type="date" id="date" class="form-control"  required="required"  th:field="*{fecha}"> 
+						</div>
+
+					</div>
+					
+					<p sec:authorize="hasRole('ROLE_ADMIN' )" >Nombres:<span   th:text = "${usuario.id}" ></span></p> 
+					
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="inputGroupSelect01">Horario</label>
+						</div>
+						<select
+							th:field="*{Horario}" class="custom-select" >
+							
+							<option th:each="hora: ${horario}" th:value="${hora.codigo}" 
+								th:text="${hora.descripcion}" ></option>
+						</select>
+					</div>
+					
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="inputGroupSelect01">Peluquero</label>
+						</div>
+						<select
+							th:field="*{Trabajador}" class="custom-select">
+							<option th:each="tra: ${trabajador}" th:value="${tra.codigo}"
+								th:text="${tra.nombre}"></option>
+						</select>
+					</div>
+					
+					
+					<div sec:authorize="hasRole('ROLE_ADMIN' )"  class="input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text" for="inputGroupSelect01">Tus Tarjetas</label>
+						</div>
+						<select
+							th:field="*{Tarjeta}" class="custom-select">
+							<option th:each="tar: ${tarjeta}" th:value="${tar.codigo}"
+								th:text="${tar.numero}"></option>
+						</select>
+					</div>
+					
+					
+					<hr>
+					<h4 class="label info">
+						<label class="text-black-50"> S/</label> <label
+							th:text="${servicio.precio}" class="text-black-50"></label> <label
+							class="text-black-50" style="margin-left: -8px">0</label>
+					</h4>
+					
+					<button class="btn btn-lg btn-primary btn-block text-uppercase"
+						type="submit"  >
+						<i class="fas fa-cart-plus"></i> ANADIR AL CARRITO </button>
+					<a th:href="@{ /servicio }" class="btn btn-lg btn-danger btn-block text-uppercase"
+						>Cancelar</a>
+				</form>
+
+
+
+
+			</div>
+		</div>
+		<!-- /.row -->
+
+		<hr>
+		<!-- Pagination -->
+
+	</div>
+	<!-- /.container -->
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
