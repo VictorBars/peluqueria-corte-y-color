@@ -80,10 +80,10 @@ public class InitDB implements CommandLineRunner{
 		Usuario admin = new Usuario();
 		admin.setUsername("admin");
 		admin.setPassword(passwordEncoder.encode("admin3214"));
-		admin.setApellidos("Lozano Vasquez");
+		admin.setApellidos("Gomez Lopez");
 		admin.setCorreo("labelladurmiente1968@hotmail.com");
 		admin.setDni("5672");
-		admin.setNombres("Vilma Aurora");
+		admin.setNombres("Sara Emilia");
 		
 		admin.setEnable(true);
 		
@@ -143,7 +143,7 @@ public class InitDB implements CommandLineRunner{
 	    //Trabajador 1
 	    Trabajador t1 = new Trabajador();
 	    
-	    t1.setNombre("Vilma Aurora Lozano Vasquez");
+	    t1.setNombre("Sara Emilia Gomez Lopez");
 	    t1.setSexo("F");
 	    t1.setDireccion("Jr.Ica 3290");
 	    t1.setDni("12345678");
@@ -153,7 +153,7 @@ public class InitDB implements CommandLineRunner{
 	    //Trabajador 2
 	    Trabajador t2 = new Trabajador();
 	    
-	    t2.setNombre("Jannet Sara Chavez Lozano");
+	    t2.setNombre("Maria Fernanda Barsallo Gomez");
 	    t2.setSexo("F");
 	    t2.setDireccion("Jr.Huanuco 5678");
 	    t2.setDni("12345768");
@@ -163,7 +163,7 @@ public class InitDB implements CommandLineRunner{
 	    //Trabajador 2
 	    Trabajador t3 = new Trabajador();
 	    
-	    t3.setNombre("Ivan Jose Moreno Molina");
+	    t3.setNombre("Bruno Ray Gamboa Almonte");
 	    t3.setSexo("M");
 	    t3.setDireccion("Jr.Ica 3291");
 	    t3.setDni("11145768");
@@ -173,9 +173,9 @@ public class InitDB implements CommandLineRunner{
 	    //Trabajador 2
 	    Trabajador t4 = new Trabajador();
 	    
-	    t4.setNombre("Paola Lola Ambrocio Cipriano");
+	    t4.setNombre("Nayely Yanina Revilla Fernandez");
 	    t4.setSexo("F");
-	    t4.setDireccion("Pascasmayo 3291");
+	    t4.setDireccion("Jr. Cusco 176");
 	    t4.setDni("11145778");
 	    t4.setTelefono("123477799");
 	    t4 = trabajadorRepository.save(t4);
