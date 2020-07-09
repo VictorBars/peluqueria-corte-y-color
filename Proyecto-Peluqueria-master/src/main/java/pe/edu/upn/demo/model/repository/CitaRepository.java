@@ -13,7 +13,7 @@ import pe.edu.upn.demo.model.entidades.Cita;
 public interface CitaRepository extends JpaRepository<Cita, Integer>{
 
 	@Query(value="SELECT * FROM cita "
-			+ "WHERE fecha_cita LIKE '2019-11%' "
+			+ "WHERE fecha_cita LIKE '2020-06%' "
 			+ "ORDER BY cod_servicio", nativeQuery=true) 
 	List<Cita> fecha();
 }

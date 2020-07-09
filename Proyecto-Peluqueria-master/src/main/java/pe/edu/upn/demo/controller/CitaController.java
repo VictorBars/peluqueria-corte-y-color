@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import pe.edu.upn.demo.model.entidades.Cita;
 import pe.edu.upn.demo.model.entidades.Horario;
@@ -63,7 +64,8 @@ public class CitaController {
 	}
 
 	@GetMapping("/fecha")
-	public String precio(Model model) {
+	public String precio(Model model ,
+			RedirectAttributes flash) {
 		try {
 			List<Cita> cita = citaService.fecha();
 			model.addAttribute("citas", cita);
